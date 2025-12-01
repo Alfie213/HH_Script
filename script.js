@@ -1,6 +1,8 @@
 // Задержка, чтоб не вызывать подозрений и чтобы данные успели подгрузиться
 function wait(ms) {
-  return new Promise((tasks) => setTimeout(tasks, ms));
+  const deviation = ms * 0.05; // ±5%
+  const randomized = ms + (Math.random() * deviation * 2 - deviation);
+  return new Promise((tasks) => setTimeout(tasks, randomized));
 }
 
 async function start() {
